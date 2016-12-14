@@ -1,6 +1,7 @@
 /**
  * Created by diego on 13/12/16.
  */
+"use strict";
 
 var chokidar = require("chokidar");
 var fs = require("fs");
@@ -11,8 +12,7 @@ var watcher = chokidar.watch('/home/diego/Music/*.txt', {
     persistent: true
 });
 
-watcher
-.on('add', path => {
+watcher.on('add', path => {
     console.log(`File ${path} has been added`);
 
     var lineReader = require('readline').createInterface({
