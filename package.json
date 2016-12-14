@@ -1,0 +1,22 @@
+{
+  "name": "gigajob",
+  "version": "1.0.0",
+  "description": "Conector de Archivos con Base de datos Giga",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reyesdiego/ConectorGiga.git"
+  },
+  "author": "Diego Reyes - David Lifsyc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reyesdiego/ConectorGiga/issues"
+  },
+  "homepage": "https://github.com/reyesdiego/ConectorGiga#readme",
+  "dependencies": {
+    "chokidar": "^1.6.1"
+  }
+}
