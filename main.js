@@ -3,6 +3,7 @@
  */
 
 var chokidar = require("chokidar");
+var fs = require("fs");
 
 var watcher = chokidar.watch('/home/diego/Music/*.txt', {
     ignored: /(^|[\/\\])\../,
@@ -12,14 +13,20 @@ var watcher = chokidar.watch('/home/diego/Music/*.txt', {
 
 watcher
 .on('add', path => {
-    console.log(`File ${path} has been changed`);
+    console.log(`File ${path} has been added`);
 
     var lineReader = require('readline').createInterface({
-        input: require('fs').createReadStream(path)
+        input: fs.createReadStream(path)
     });
 
     lineReader.on('line', function (line) {
         console.log("ID: %s, CUIT: %s", line.substr(0,3),line.substr(3,11));
+    });
+
+    lineReader.on('close', function () {
+        fs.rename(path, path + ".readed", function (err, file) {
+            console.log("Terminado");
+        });
     });
 
 })
@@ -27,7 +34,7 @@ watcher
     console.log(`File ${path} has been changed`);
 })
 .on('unlink', path => {
-    console.log(`File ${path} has been changed`);
+    console.log(`File ${path} has been removed`);
 });
 
 watcher
